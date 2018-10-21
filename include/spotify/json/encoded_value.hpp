@@ -131,7 +131,7 @@ inline void encoded_value_ref::swap(encoded_value_ref &value_ref) {
 
 inline encoded_value::encoded_value()
     : _size(4),
-      _data((void *) "null", [](void *) {}) {}
+      _data((void *) "null", [](void *) noexcept(noexcept(std::free(nullptr))) {}) {}
 
 inline encoded_value::encoded_value(encoded_value &&value) noexcept
     : encoded_value() {
